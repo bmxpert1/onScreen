@@ -12,6 +12,7 @@
     var params = $.extend({
       direction: 'vertical',
       toggleClass: true,
+      context: window,
       doIn: null,
       doOut: null,
       tolerance: 0,
@@ -59,7 +60,7 @@
       
       function checkPos() {
         // Viewport dimensions
-        $win = $(window);
+        $win = $(params.context);
         winHeight = $win.height();
         winWidth = $win.width();
         winBottom = $win.scrollTop() + winHeight;
@@ -107,7 +108,7 @@
       
       checkPos();
       
-      $(window).on('scroll',checkPos).on('resize',checkPos).on('load',checkPos);
+      $(params.context).on('scroll',checkPos).on('resize',checkPos).on('load',checkPos);
       
     });
     return this;
